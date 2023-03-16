@@ -1,0 +1,2 @@
+"0","harassed <- harassed %>% tidyr::pivot_longer(cols = c(Baseline:`TRANS+ trans f`),"
+"0","                                                      names_to = ""Group"")"

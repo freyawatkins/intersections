@@ -1,0 +1,4 @@
+"0","open$openness <- factor(open$openness, levels = c(""Never open"", "
+"0","                                                ""Rarely open"","
+"0","                                                ""Fairly open"", "
+"0","                                                ""Very open""))"

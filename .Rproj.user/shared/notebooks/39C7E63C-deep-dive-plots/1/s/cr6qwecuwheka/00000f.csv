@@ -1,0 +1,8 @@
+"0","endsmeet$Group <- factor(endsmeet$Group, levels = c(""Baseline"", "
+"0","                                             ""TRANS"","
+"0","                                             ""TRANS+ EMM"","
+"0","                                             ""TRANS+ disability""),"
+"0","                    labels = c(""All LGBTI respondents"", "
+"0","                               ""Trans & non-binary people"","
+"0","                               ""Trans & non-binary ethnic\n minorities (incl. migrants)"","
+"0","                               ""Trans & non-binary\npeople with disabilities""))"

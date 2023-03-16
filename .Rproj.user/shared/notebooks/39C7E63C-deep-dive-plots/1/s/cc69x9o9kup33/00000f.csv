@@ -1,0 +1,3 @@
+"0","endsmeet <- endsmeet %>% select(c(-`TRANS+ intersex`:-`TRANS+ not het`)) %>%"
+"0","                                  tidyr::pivot_longer(cols = c(Baseline:`TRANS+ disability`),"
+"0","                                                      names_to = ""Group"")"

@@ -1,0 +1,8 @@
+"0","notreport$Response <- factor(notreport$Response, levels = c(""Nothing would happen"","
+"0","                                                            ""Do not trust authorities"","
+"0","                                                            ""Too hurt"","
+"0","                                                            ""Fear of intimidation""),"
+"0","                    labels = c(""Nothing would happen or change"", "
+"0","                               ""Do not trust the authorities"","
+"0","                               ""Felt too hurt, traumatised, stressed\nor annoyed to deal with it actively"","
+"0","                               ""Fear of intimidation by perpetrators""))"

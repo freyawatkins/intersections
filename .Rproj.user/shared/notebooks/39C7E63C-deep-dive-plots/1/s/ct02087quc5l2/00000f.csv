@@ -1,0 +1,8 @@
+"0","healthdiscrim$Response <- factor(healthdiscrim$Response, levels = c(""Inappropriate curiosity or comments"","
+"0","                                                            ""Difficulty gaining access"","
+"0","                                                            ""Pressured to undergo treatment"","
+"0","                                                            ""Avoided services""),"
+"0","                    labels = c(""Inappropriate curiosity or comments"", "
+"0","                               ""Difficulty in gaining access to healthcare"","
+"0","                               ""Being pressured or forced to undergo a\ncertain medical or psychological test"","
+"0","                               ""I have avoided healthcare services""))"

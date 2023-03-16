@@ -1,0 +1,2 @@
+"0","open <- open %>% tidyr::pivot_longer(cols = c(Baseline:gqnb),"
+"0","                            names_to = ""Group"")"

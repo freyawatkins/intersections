@@ -1,0 +1,2 @@
+"0","notreport <- notreport %>% tidyr::pivot_longer(cols = c(Baseline:`TRANS+ intersex`),"
+"0","                                                      names_to = ""Group"")"

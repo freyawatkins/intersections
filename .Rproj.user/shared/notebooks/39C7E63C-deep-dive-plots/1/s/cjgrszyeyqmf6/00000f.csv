@@ -1,0 +1,8 @@
+"0","endsmeet$Response <- factor(endsmeet$Response, levels = c(""Don't know"", "
+"0","                                                ""Prefer not to say"","
+"0","                                                ""With great difficulty"", "
+"0","                                                ""With difficulty"","
+"0","                                                ""With some difficulty"","
+"0","                                                ""Fairly easily"","
+"0","                                                ""Easily"","
+"0","                                                ""Very easily""))"

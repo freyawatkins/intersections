@@ -1,0 +1,33 @@
+{
+    "id": "1304CDE9",
+    "path": "~/FRA-II-trans/deep-dive-plots.qmd",
+    "project_path": "deep-dive-plots.qmd",
+    "type": "quarto_markdown",
+    "hash": "2949089956",
+    "contents": "",
+    "dirty": false,
+    "created": 1675962012291.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "rmdVisualMode": "false",
+        "rmdVisualWrapConfigured": "true",
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "498,0",
+        "scrollLine": "327",
+        "docOutlineVisible": "1",
+        "rmdVisualCollapsedChunks": "",
+        "rmdVisualModeLocation": "2:0",
+        "docOutlineSize": "403"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1677849449,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1677849449104,
+    "read_only": false,
+    "read_only_alternatives": []
+}

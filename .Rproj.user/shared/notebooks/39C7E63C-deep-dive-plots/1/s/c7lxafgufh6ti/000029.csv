@@ -1,0 +1,4 @@
+"0"," # guides(fill = guide_legend(nrow=1, byrow=F))"
+"0",""
+"0","ggsave(here::here(""figures"", ""fig1.png""), plot = last_plot(), "
+"0","       width = 12, height = 6, units = ""in"")"

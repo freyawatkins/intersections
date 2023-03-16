@@ -1,0 +1,5 @@
+"0","open$Group <- factor(open$Group, levels = c(""Baseline"", ""Trans f"", ""Trans m"","
+"0","                                            ""TRANS"", ""gqnb""),"
+"0","                    labels = c(""All LGBTI respondents"", ""Trans women"",       "
+"0","                               ""Trans men"", ""Trans & non-binary people"","
+"0","                               ""Non-binary people""))"
