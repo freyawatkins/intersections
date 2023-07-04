@@ -8,16 +8,19 @@ editor: visual
 # Setup
 
 Load libraries:
+
 ```{r}
 library(here)
 library(tidyverse) # data wrangling
 library(scales)
 ```
+
 ```{r}
 here::here()
 ```
 
 Set up plot theme:
+
 ```{r}
 # add 
 plot_cosmetics <- theme_classic() +
@@ -41,20 +44,23 @@ plot_cosmetics <- theme_classic() +
 
 # Questions
 
-## 1. Openness
+## 0. Openness
 
 Read in TRANS-4-Openness data:
+
 ```{r}
 open <- read_csv("data/trans-4-openness.csv")
 ```
 
 Pivot data to long format:
+
 ```{r}
 open <- open %>% tidyr::pivot_longer(cols = c(Baseline:gqnb),
                             names_to = "Group")
 ```
 
 Relevel Response factor:
+
 ```{r}
 open$openness <- factor(open$openness, levels = c("Never open", 
                                                 "Rarely open",
@@ -63,6 +69,7 @@ open$openness <- factor(open$openness, levels = c("Never open",
 ```
 
 Relevel Group factor with labels:
+
 ```{r}
 open$Group <- factor(open$Group, levels = c("Baseline", "Trans f", "Trans m",
                                             "TRANS", "gqnb"),
@@ -72,6 +79,7 @@ open$Group <- factor(open$Group, levels = c("Baseline", "Trans f", "Trans m",
 ```
 
 Plot:
+
 ```{r}
 open %>% ggplot(aes(x=Group, y=value/100, fill = openness)) +
   geom_col(position = position_stack(reverse = T))  +
@@ -80,7 +88,7 @@ open %>% ggplot(aes(x=Group, y=value/100, fill = openness)) +
   scale_fill_manual(values = c('#a6611a','#dfc27d','#80cdc1','#018571')) +
   scale_y_continuous(labels = percent_format(accuracy=1)) +
   coord_flip() +
-  labs(title = "Figure 1. Openness about Sexual Orientation, Gender Identity & Expression, Sex Characteristics",
+  labs(title = "Figure 0. Openness about Sexual Orientation, Gender Identity & Expression, Sex Characteristics",
        x = NULL, y = NULL, fill = NULL,
        caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents to which extent they are open about being LGBTI to different people, such as family\nmembers, friends, colleagues, etc. It calculated four levels of ‘openness’: very open, fairly open, rarely open, and almost never open. FRA then provided the average of these areas of life as one overall openness scale.") +
   plot_cosmetics +
@@ -88,17 +96,20 @@ open %>% ggplot(aes(x=Group, y=value/100, fill = openness)) +
         plot.title.position = "plot")
  # guides(fill = guide_legend(nrow=1, byrow=F))
 
-ggsave(here::here("figures", "fig1.png"), plot = last_plot(), 
+ggsave(here::here("figures", "fig0.png"), plot = last_plot(), 
        width = 12, height = 6, units = "in")
 ```
 
-## 2. HH ends meet
+## 1. HH ends meet
 
 Read in TRANS-9-hh-ends-meet data:
+
 ```{r}
 endsmeet <- read_csv("data/TRANS-9-hh-ends-meet.csv")
 ```
+
 Pivot data to long format:
+
 ```{r}
 endsmeet <- endsmeet %>% select(c(-`TRANS+ intersex`:-`TRANS+ not het`)) %>%
                                   tidyr::pivot_longer(cols = c(Baseline:`TRANS+ disability`),
@@ -106,6 +117,7 @@ endsmeet <- endsmeet %>% select(c(-`TRANS+ intersex`:-`TRANS+ not het`)) %>%
 ```
 
 Relevel Response factor:
+
 ```{r}
 endsmeet$Response <- factor(endsmeet$Response, levels = c("Don't know", 
                                                 "Prefer not to say",
@@ -118,6 +130,7 @@ endsmeet$Response <- factor(endsmeet$Response, levels = c("Don't know",
 ```
 
 Relevel Group factor with labels:
+
 ```{r}
 endsmeet$Group <- factor(endsmeet$Group, levels = c("Baseline", 
                                              "TRANS",
@@ -130,6 +143,7 @@ endsmeet$Group <- factor(endsmeet$Group, levels = c("Baseline",
 ```
 
 Plot:
+
 ```{r}
 endsmeet %>% filter(Response != "Dont know" & Response != "Prefer not to say") %>%
   ggplot(aes(x=Group, y=value/100, fill = Response)) +
@@ -139,7 +153,7 @@ endsmeet %>% filter(Response != "Dont know" & Response != "Prefer not to say") %
   scale_fill_manual(values = c('#8c510a','#d8b365','#f6e8c3','#c7eae5','#5ab4ac','#01665e')) +
   scale_y_continuous(labels = percent_format(accuracy=1)) +
   coord_flip() +
-  labs(title = "Figure 2. Household ability to make ends meet, disaggregated",
+  labs(title = "Figure 1. Household ability to make ends meet, disaggregated",
        x = NULL, y = NULL, fill = NULL,
        caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nThinking of your household’s total income, is your household able to make ends meet?") +
   plot_cosmetics +
@@ -147,25 +161,27 @@ endsmeet %>% filter(Response != "Dont know" & Response != "Prefer not to say") %
         plot.title.position = "plot") +
   guides(fill = guide_legend(nrow=1, byrow=T))
 
-ggsave(here::here("figures", "fig2.png"), plot = last_plot(), 
+ggsave(here::here("figures", "fig1.png"), plot = last_plot(), 
        width = 12, height = 6, units = "in")
 ```
 
-
-## 3. Not report why
+## 2. Not report why
 
 Read in TRANS-14-hh-ends-meet data:
+
 ```{r}
 notreport <- read_csv("data/TRANS-14-not-report-why.csv")
 ```
 
 Pivot data to long format:
+
 ```{r}
 notreport <- notreport %>% tidyr::pivot_longer(cols = c(Baseline:`TRANS+ intersex`),
                                                       names_to = "Group")
 ```
 
 Relevel Response factor:
+
 ```{r}
 notreport$Response <- factor(notreport$Response, levels = c("Nothing would happen",
                                                             "Do not trust authorities",
@@ -177,8 +193,8 @@ notreport$Response <- factor(notreport$Response, levels = c("Nothing would happe
                                "Fear of intimidation by perpetrators"))
 ```
 
-
 Relevel Group factor with labels:
+
 ```{r}
 notreport$Group <- factor(notreport$Group, levels = c("Baseline", 
                                              "TRANS",
@@ -193,6 +209,7 @@ notreport$Group <- factor(notreport$Group, levels = c("Baseline",
 ```
 
 Plot:
+
 ```{r}
 notreport %>%
   ggplot(aes(x=Group, y=value/100, fill = Group)) +
@@ -203,7 +220,7 @@ notreport %>%
   scale_y_continuous(limits = c(0,1), labels = percent_format(accuracy=1)) +
   coord_flip() +
   facet_wrap(~Response) +
-  labs(title = "Figure 3. Reasons why discrimination was not reported, disaggregated",
+  labs(title = "Figure 2. Reasons why discrimination was not reported, disaggregated",
        x = NULL, y = NULL, fill = NULL,
        caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nThinking about the most recent incident of discrimination which you did not report: why did you not report it?") +
   plot_cosmetics +
@@ -211,25 +228,27 @@ notreport %>%
         plot.title.position = "plot") +
   guides(fill = guide_legend(nrow=1, byrow=T))
 
-ggsave(here::here("figures", "fig3.png"), plot = last_plot(), 
+ggsave(here::here("figures", "fig2.png"), plot = last_plot(), 
        width = 12, height = 8, units = "in")
 ```
 
-## 4. Health discrim
+## 3. Health discrim
 
 Read in TRANS-14b-health-discrim data:
+
 ```{r}
 healthdiscrim <- read_csv("data/trans-14b-health-discrim.csv")
 ```
 
-
 Pivot data to long format:
+
 ```{r}
 healthdiscrim <- healthdiscrim %>% tidyr::pivot_longer(cols = c(Baseline:`TRANS+ intersex`),
                                                       names_to = "Group")
 ```
 
 Relevel Response factor:
+
 ```{r}
 healthdiscrim$Response <- factor(healthdiscrim$Response, levels = c("Inappropriate curiosity or comments",
                                                             "Difficulty gaining access",
@@ -242,6 +261,7 @@ healthdiscrim$Response <- factor(healthdiscrim$Response, levels = c("Inappropria
 ```
 
 Relevel Group factor with labels:
+
 ```{r}
 healthdiscrim$Group <- factor(healthdiscrim$Group, levels = c("Baseline", 
                                              "TRANS",
@@ -256,6 +276,7 @@ healthdiscrim$Group <- factor(healthdiscrim$Group, levels = c("Baseline",
 ```
 
 Plot:
+
 ```{r}
 healthdiscrim %>%
   ggplot(aes(x=Group, y=value/100, fill = Group)) +
@@ -266,7 +287,7 @@ healthdiscrim %>%
   scale_y_continuous(limits = c(0,1), labels = percent_format(accuracy=1)) +
   coord_flip() +
   facet_wrap(~Response) +
-  labs(title = "Figure 4. Experiences of specific barriers in access to healthcare, disaggregated",
+  labs(title = "Figure 3. Experiences of specific barriers in access to healthcare, disaggregated",
        x = NULL, y = NULL, fill = NULL,
        caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nHave you ever experienced any of the following situations when using or trying to access healthcare services as a trans person?") +
   plot_cosmetics +
@@ -274,24 +295,27 @@ healthdiscrim %>%
         plot.title.position = "plot") +
   guides(fill = guide_legend(nrow=1, byrow=T))
 
-ggsave(here::here("figures", "fig4.png"), plot = last_plot(), 
+ggsave(here::here("figures", "fig3.png"), plot = last_plot(), 
        width = 12, height = 8, units = "in")
 ```
+
 ## 5. Attacked 5 years
 
-
 Read in TRANS-15-attacked-5-years data:
+
 ```{r}
 attacked <- read_csv("data/trans-15-attacked5yrs.csv")
 ```
 
 Pivot data to long format:
+
 ```{r}
 attacked <- attacked %>% tidyr::pivot_longer(cols = c(Baseline:`TRANS+ intersex`),
                                                       names_to = "Group")
 ```
 
 Relevel Response factor:
+
 ```{r}
 attacked$Response <- factor(attacked$Response, levels = c("Don't know", 
                                                 "Prefer not to say",
@@ -305,6 +329,7 @@ attacked$Response <- factor(attacked$Response, levels = c("Don't know",
 ```
 
 Relevel Group factor with labels:
+
 ```{r}
 attacked$Group <- factor(attacked$Group, levels = c("Baseline", 
                                              "TRANS",
@@ -318,8 +343,8 @@ attacked$Group <- factor(attacked$Group, levels = c("Baseline",
                                "Trans & non-binary\nintersex people"))
 ```
 
-
 Plot:
+
 ```{r}
 attacked %>% filter(Response != "Dont know" & Response != "Prefer not to say") %>%
   ggplot(aes(x=Group, y=value/100, fill = Response)) +
@@ -330,7 +355,7 @@ attacked %>% filter(Response != "Dont know" & Response != "Prefer not to say") %
                                         '#e7298a','#ce1256','#91003f')) +
   scale_y_continuous(labels = percent_format(accuracy=1)) +
   coord_flip() +
-  labs(title = "Figure 5. Number of times physically or sexually attacked in the last 5 years, disaggregated",
+  labs(title = "Figure 4. Number of times physically or sexually attacked in the last 5 years, disaggregated",
        x = NULL, y = NULL, fill = NULL,
        caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nIn the last 5 years, how many times have you been physically or sexually attacked at home or elsewhere (street, on public transport, at your workplace, etc.) for any reason?") +
   plot_cosmetics +
@@ -338,24 +363,27 @@ attacked %>% filter(Response != "Dont know" & Response != "Prefer not to say") %
         plot.title.position = "plot") +
   guides(fill = guide_legend(nrow=1, byrow=T, reverse = T))
 
-ggsave(here::here("figures", "fig5.png"), plot = last_plot(), 
+ggsave(here::here("figures", "fig4.png"), plot = last_plot(), 
        width = 12, height = 6, units = "in")
 ```
 
 ## 6. Any harassment
 
 Read in TRANS-22-harassment data:
+
 ```{r}
 harassed <- read_csv("data/trans-22-harassment.csv")
 ```
 
 Pivot data to long format:
+
 ```{r}
 harassed <- harassed %>% tidyr::pivot_longer(cols = c(Baseline:`TRANS+ trans f`),
                                                       names_to = "Group")
 ```
 
 Relevel Response factor:
+
 ```{r}
 harassed$Response <- factor(harassed$Response, levels = c("Offensive comments in person", 
                                                 "Threatened violence in person",
@@ -376,6 +404,7 @@ harassed$Response <- factor(harassed$Response, levels = c("Offensive comments in
 ```
 
 Relevel Group factor with labels:
+
 ```{r}
 harassed$Group <- factor(harassed$Group, levels = c("Baseline",
                                              "TRANS+ trans m",
@@ -398,6 +427,7 @@ harassed$Group <- factor(harassed$Group, levels = c("Baseline",
 ```
 
 Plot:
+
 ```{r}
 harassed %>% filter(Response == "None of these" | Response == "At least one of the listed types of harassment") %>% 
 ggplot(aes(x=Group, y=value/100, fill = Response)) +
@@ -407,7 +437,7 @@ ggplot(aes(x=Group, y=value/100, fill = Response)) +
   scale_fill_manual(values = c('#80cdc1', '#dfc27d')) +
   scale_y_continuous(labels = percent_format(accuracy=1)) +
   coord_flip() +
-  labs(title = "Figure 6. Experiences of some kind of harassment in the last 5 years, disaggregated",
+  labs(title = "Figure 5. Experiences of some kind of harassment in the last 5 years, disaggregated",
        x = NULL, y = NULL, fill = NULL,
        caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nIn the last 5 years, has somebody done any of the following things to you for any reason? Made offensive or threatening comments in person; Threatened violence in person; Made offensive or threatening gestures or\nstared inappropriately; Loitered, waited or followed you in a threatening way; Sent emails or text messages that were offensive or threatening; Posted offensive or threatening comments about you online; None of these") +
   plot_cosmetics +
@@ -415,13 +445,14 @@ ggplot(aes(x=Group, y=value/100, fill = Response)) +
         plot.title.position = "plot") +
   guides(fill = guide_legend(nrow=1, byrow=T, reverse = T))
 
-ggsave(here::here("figures", "fig6.png"), plot = last_plot(), 
+ggsave(here::here("figures", "fig5.png"), plot = last_plot(), 
        width = 12, height = 8, units = "in")
 ```
 
 ## 7. Age realise trans
 
 Read in TRANS-26-age data:
+
 ```{r}
 age <- read_csv("data/trans-26-age.csv")
 age2 <- read_csv("data/trans-26-age2.csv")
@@ -433,15 +464,17 @@ age2 <- age2 %>% mutate(Group = "Trans & non-binary")
 ```
 
 Relevel Group factor with labels:
+
 ```{r}
 age$Group <- factor(age$Group, levels = c("Trans & non-binary"),
                          labels = c("Trans %\nnon-binary") )
 
 age2$Group <- factor(age2$Group, levels = c("Trans & non-binary"),
                          labels = c("Trans &\nnon-binary") )
-```                              
+```
 
 Relevel Response factor:
+
 ```{r}
 age$Age <- factor(age$Age, levels = c("0 to 3", "4 to 5", "6 to 10", "11 to 14", "15 to 17", 
                                       "18 to 24", "25 to 29", "30 to 34", "35 to 39", "40 to 44", 
@@ -465,7 +498,7 @@ age %>%
                                         '#f1eef6','#d4b9da','#c994c7','#df65b0')) +
   scale_y_continuous(labels = percent_format(accuracy=1)) +
   coord_flip() +
-  labs(title = "Figure 7. Age at which respondents realised that they were trans or non-binary",
+  labs(title = "Figure 6. Age at which respondents realised that they were trans or non-binary",
        x = NULL, y = NULL, fill = NULL,
        caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nAt what age did you realise that you were trans?") +
   plot_cosmetics +
@@ -473,7 +506,7 @@ age %>%
         plot.title.position = "plot") +
   guides(fill = guide_legend(nrow=1, byrow=T, reverse = F))
 
-ggsave(here::here("figures", "fig7a.png"), plot = last_plot(), 
+ggsave(here::here("figures", "fig6a.png"), plot = last_plot(), 
        width = 12, height = 4, units = "in")
 
 age2 %>%
@@ -485,7 +518,7 @@ age2 %>%
                                         '#78c679','#41ab5d','#238443','#005a32')) +
   scale_y_continuous(labels = percent_format(accuracy=1)) +
   coord_flip() +
-  labs(title = "Figure 7. Age at which trans & non-binary respondents realised that they were trans or non-binary",
+  labs(title = "Figure 6. Age at which trans & non-binary respondents realised that they were trans or non-binary",
        x = NULL, y = NULL, fill = NULL,
        caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nAt what age did you first realise that your feelings about your gender did not match the gender assigned to you at birth?") +
   plot_cosmetics +
@@ -493,23 +526,27 @@ age2 %>%
         axis.text.y = element_blank(),
         axis.ticks.y = element_blank())
 
-ggsave(here::here("figures", "fig7b.png"), plot = last_plot(), 
+ggsave(here::here("figures", "fig6b.png"), plot = last_plot(), 
        width = 12, height = 3, units = "in")
 ```
+
 ## 8. No intervention why
 
 Read in TRANS-29-no-intervention data:
+
 ```{r}
 intervention <- read_csv("data/trans-29-no-intervention.csv")
 ```
 
 Pivot data to long format:
+
 ```{r}
 intervention <- intervention %>% tidyr::pivot_longer(cols = c(TRANS:`TRANS+ 15-24`),
                                                       names_to = "Group")
 ```
 
 Relevel Response factor:
+
 ```{r}
 intervention$Response <- factor(intervention$Response, 
                                 levels = c("Not needed",
@@ -531,6 +568,7 @@ intervention$Response <- factor(intervention$Response,
 ```
 
 Relevel Group factor with labels:
+
 ```{r}
 intervention$Group <- factor(intervention$Group, levels = c("TRANS",
                                              "TRANS+ not het",
@@ -551,6 +589,7 @@ intervention$Group <- factor(intervention$Group, levels = c("TRANS",
 ```
 
 Plot:
+
 ```{r}
 intervention %>% filter(Response != "Not needed" & Response != "Don’t know where to go" &
                         Response != "Would have to give up\nreproductive capacity" & Response != "Not offered in country") %>%    ggplot(aes(x=Group, y=value/100, fill = Group)) +
@@ -562,7 +601,7 @@ intervention %>% filter(Response != "Not needed" & Response != "Don’t know whe
   scale_y_continuous(limits = c(0,1), labels = percent_format(accuracy=1)) +
   coord_flip() +
   facet_wrap(~Response, ncol = 2) +
-  labs(title = "Figure 8. Reasons for not undergoing medical interventions, disaggregated",
+  labs(title = "Figure 7. Reasons for not undergoing medical interventions, disaggregated",
        x = NULL, y = NULL, fill = NULL,
        caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nFor what reasons have you not undergone any kind of intervention to change your body? Read all options and select all that apply") +
   plot_cosmetics +
@@ -570,6 +609,6 @@ intervention %>% filter(Response != "Not needed" & Response != "Don’t know whe
         plot.title.position = "plot") +
   guides(fill = guide_legend(nrow=1, byrow=T))
 
-ggsave(here::here("figures", "fig8.png"), plot = last_plot(), 
+ggsave(here::here("figures", "fig7.png"), plot = last_plot(), 
        width = 12, height = 8, units = "in")
 ```
