@@ -89,8 +89,9 @@ open %>% ggplot(aes(x=Group, y=value/100, fill = openness)) +
   scale_y_continuous(labels = percent_format(accuracy=1)) +
   coord_flip() +
   labs(title = "Figure 0. Openness about Sexual Orientation, Gender Identity & Expression, Sex Characteristics",
-       x = NULL, y = NULL, fill = NULL,
-       caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents to which extent they are open about being LGBTI to different people, such as family\nmembers, friends, colleagues, etc. It calculated four levels of ‘openness’: very open, fairly open, rarely open, and almost never open. FRA then provided the average of these areas of life as one overall openness scale.") +
+       x = NULL, y = NULL, fill = NULL#,
+       #caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents to which extent they are open about being LGBTI to different people, such as family\nmembers, friends, colleagues, etc. It calculated four levels of ‘openness’: very open, fairly open, rarely open, and almost never open. FRA then provided the average of these areas of life as one overall openness scale."
+       ) +
   plot_cosmetics +
   theme(legend.position = "top", legend.justification = "centre",
         plot.title.position = "plot")
@@ -154,8 +155,10 @@ endsmeet %>% filter(Response != "Dont know" & Response != "Prefer not to say") %
   scale_y_continuous(labels = percent_format(accuracy=1)) +
   coord_flip() +
   labs(title = "Figure 1. Household ability to make ends meet, disaggregated",
-       x = NULL, y = NULL, fill = NULL,
-       caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nThinking of your household’s total income, is your household able to make ends meet?") +
+       x = NULL, y = NULL, fill = NULL
+       #,
+       # caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nThinking of your household’s total income, is your household able to make ends meet?"
+       ) +
   plot_cosmetics +
   theme(legend.position = "top", legend.justification = "centre",
         plot.title.position = "plot") +
@@ -221,8 +224,9 @@ notreport %>%
   coord_flip() +
   facet_wrap(~Response) +
   labs(title = "Figure 2. Reasons why discrimination was not reported, disaggregated",
-       x = NULL, y = NULL, fill = NULL,
-       caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nThinking about the most recent incident of discrimination which you did not report: why did you not report it?") +
+       x = NULL, y = NULL, fill = NULL#,
+       #caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nThinking about the most recent incident of discrimination which you did not report: why did you not report it?"
+       ) +
   plot_cosmetics +
   theme(legend.position = "none", legend.justification = "centre",
         plot.title.position = "plot") +
@@ -288,8 +292,9 @@ healthdiscrim %>%
   coord_flip() +
   facet_wrap(~Response) +
   labs(title = "Figure 3. Experiences of specific barriers in access to healthcare, disaggregated",
-       x = NULL, y = NULL, fill = NULL,
-       caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nHave you ever experienced any of the following situations when using or trying to access healthcare services as a trans person?") +
+       x = NULL, y = NULL, fill = NULL#,
+       #caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nHave you ever experienced any of the following situations when using or trying to access healthcare services as a trans person?"
+       ) +
   plot_cosmetics +
   theme(legend.position = "none", legend.justification = "centre",
         plot.title.position = "plot") +
@@ -356,8 +361,9 @@ attacked %>% filter(Response != "Dont know" & Response != "Prefer not to say") %
   scale_y_continuous(labels = percent_format(accuracy=1)) +
   coord_flip() +
   labs(title = "Figure 4. Number of times physically or sexually attacked in the last 5 years, disaggregated",
-       x = NULL, y = NULL, fill = NULL,
-       caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nIn the last 5 years, how many times have you been physically or sexually attacked at home or elsewhere (street, on public transport, at your workplace, etc.) for any reason?") +
+       x = NULL, y = NULL, fill = NULL#,
+      # caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nIn the last 5 years, how many times have you been physically or sexually attacked at home or elsewhere (street, on public transport, at your workplace, etc.) for any reason?"
+      ) +
   plot_cosmetics +
   theme(legend.position = "top", legend.justification = "centre",
         plot.title.position = "plot") +
@@ -438,8 +444,9 @@ ggplot(aes(x=Group, y=value/100, fill = Response)) +
   scale_y_continuous(labels = percent_format(accuracy=1)) +
   coord_flip() +
   labs(title = "Figure 5. Experiences of some kind of harassment in the last 5 years, disaggregated",
-       x = NULL, y = NULL, fill = NULL,
-       caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nIn the last 5 years, has somebody done any of the following things to you for any reason? Made offensive or threatening comments in person; Threatened violence in person; Made offensive or threatening gestures or\nstared inappropriately; Loitered, waited or followed you in a threatening way; Sent emails or text messages that were offensive or threatening; Posted offensive or threatening comments about you online; None of these") +
+       x = NULL, y = NULL, fill = NULL#,
+       #caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nIn the last 5 years, has somebody done any of the following things to you for any reason? Made offensive or threatening comments in person; Threatened violence in person; Made offensive or threatening gestures or\nstared inappropriately; Loitered, waited or followed you in a threatening way; Sent emails or text messages that were offensive or threatening; Posted offensive or threatening comments about you online; None of these"
+       ) +
   plot_cosmetics +
   theme(legend.position = "top", legend.justification = "centre",
         plot.title.position = "plot") +
@@ -499,8 +506,9 @@ age %>%
   scale_y_continuous(labels = percent_format(accuracy=1)) +
   coord_flip() +
   labs(title = "Figure 6. Age at which respondents realised that they were trans or non-binary",
-       x = NULL, y = NULL, fill = NULL,
-       caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nAt what age did you realise that you were trans?") +
+       x = NULL, y = NULL, fill = NULL#,
+       #caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nAt what age did you realise that you were trans?"
+       ) +
   plot_cosmetics +
   theme(legend.position = "top", legend.justification = "centre",
         plot.title.position = "plot") +
@@ -519,8 +527,9 @@ age2 %>%
   scale_y_continuous(labels = percent_format(accuracy=1)) +
   coord_flip() +
   labs(title = "Figure 6. Age at which trans & non-binary respondents realised that they were trans or non-binary",
-       x = NULL, y = NULL, fill = NULL,
-       caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nAt what age did you first realise that your feelings about your gender did not match the gender assigned to you at birth?") +
+       x = NULL, y = NULL, fill = NULL#,
+      # caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nAt what age did you first realise that your feelings about your gender did not match the gender assigned to you at birth?"
+      ) +
   plot_cosmetics +
   theme(legend.position = "none",
         axis.text.y = element_blank(),
@@ -602,8 +611,9 @@ intervention %>% filter(Response != "Not needed" & Response != "Don’t know whe
   coord_flip() +
   facet_wrap(~Response, ncol = 2) +
   labs(title = "Figure 7. Reasons for not undergoing medical interventions, disaggregated",
-       x = NULL, y = NULL, fill = NULL,
-       caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nFor what reasons have you not undergone any kind of intervention to change your body? Read all options and select all that apply") +
+       x = NULL, y = NULL, fill = NULL#,
+       #caption = "Data source: European Union FRA LGBTI II Survey, Baseline N: 139,799. Trans N: 20,933. The survey asked respondents:\nFor what reasons have you not undergone any kind of intervention to change your body? Read all options and select all that apply"
+       ) +
   plot_cosmetics +
   theme(legend.position = "none", legend.justification = "centre",
         plot.title.position = "plot") +
